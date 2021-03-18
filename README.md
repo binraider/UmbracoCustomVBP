@@ -35,6 +35,10 @@ This is a path to your default document. You could put a custom 404.html page in
 
     <add key="vbp:404document" value="404.html" />
 
+Lastly there is a logging setting:
+    <add key="vbp:debuglogging" value="false" />
+This is only for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production you are asking for trouble.
+
 #### OTHER Settings
 
 You need to add a reference to the module in the web.config:
