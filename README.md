@@ -13,14 +13,14 @@ Add these keys to AppSettings, with your own data, obvs
     <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
     <add key="vbp:debuglogging" value="false" />
 
-#### WHY?
+## WHY?
 
 Why did i build this? We have a few sites that have micro sites of flat html - sometimes with flipbooks, or javascript applications in them, that sort of thing. Since we use Azure WebApps almost exclusively it is a pain having to put all these thousands of files into the repo, for when we swap slots when using CI. I attempted to use Microsoft's VPP, in conjunction with Azure Blob Api, however there were various drawbacks along the way, so i ended up with this quick and dirty version.
 
-#### How it works
+## HOW IT WORKS
 It works by individually downloading the requested files and then pumping them out through the website front door as bytes, as if they are hosted locally.
 
-#### SETTINGS EXPLAINED
+## SETTINGS EXPLAINED
 Going through the settings in turn:
 
     <add key="vbp:startpaths" value="thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020" />
@@ -43,7 +43,7 @@ Lastly there is a logging setting:
     <add key="vbp:debuglogging" value="false" />
 This is ONLY for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production you are asking for trouble.
 
-#### OTHER Settings
+## OTHER Settings
 
 You need to add a reference to the module in the web.config:
 
