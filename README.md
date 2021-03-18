@@ -23,7 +23,7 @@ Why did i build this? We have a few sites that have micro sites of flat html - s
         <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
     
 
-4) Lastly you need to Amend the AppSetting "umbracoReservedUrls" to add the paths at the end. Slightly different format now - with the tilde and leading slash this time. if you want to use your normal websites 404 pages, then you can omit them.
+4) Lastly you need to Amend the AppSetting "umbracoReservedUrls" to add the paths at the end. Slightly different format now - with the tilde and leading slash this time. 
 
         ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
     
