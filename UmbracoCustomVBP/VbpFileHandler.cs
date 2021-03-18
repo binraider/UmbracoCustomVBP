@@ -60,32 +60,35 @@ namespace UmbracoCustomVBP {
                 logger.Log("================ finalpath[" + finalpath + "] finalurl[" + finalurl + "] ============");
 
                 var wc = new System.Net.WebClient();
-                try {
-                    byte[] filebytes = await wc.DownloadDataTaskAsync(finalurl);
 
-                    if (filebytes != null) {
-                        context.Response.ContentType = StaticHelpers.GetBinaryAppType(Path.GetExtension(finalpath));
-                        context.Response.BinaryWrite(filebytes);
-                        context.Response.End();
-                    } else {
-                        if (IsHtmlExpected) {
-                            finalurl = blobcontainerpath + "/" + default404document;
-                            try {                                
-                                filebytes = await wc.DownloadDataTaskAsync(finalurl);
-                                if (filebytes != null) {
-                                    context.Response.ContentType = "text/html";
-                                    context.Response.BinaryWrite(filebytes);
-                                    context.Response.End();
-                                }
-                            } catch(Exception ex) {
-                                logger.Log("Error getting 404 page for [" + finalurl + "]:" + ex.ToString());
-                            }
-                            
-                        }
-                    }
+                byte[] filebytes = null;
+
+                try {
+                    filebytes = await wc.DownloadDataTaskAsync(finalurl);
                 } catch (Exception ex) {
                     logger.Log("Error getting filebytes for [" + finalurl + "]:" + ex.ToString());
                 }
+
+                if (filebytes != null) {
+                    context.Response.ContentType = StaticHelpers.GetBinaryAppType(Path.GetExtension(finalpath));
+                    context.Response.BinaryWrite(filebytes);
+                    context.Response.End();
+                } else {
+                    if (IsHtmlExpected) {
+                        finalurl = blobcontainerpath + "/" + default404document;
+                        try {
+                            filebytes = await wc.DownloadDataTaskAsync(finalurl);                            
+                        } catch (Exception ex) {
+                            logger.Log("Error getting 404 page for [" + finalurl + "]:" + ex.ToString());
+                        }
+                        if (filebytes != null) {
+                            context.Response.ContentType = "text/html";
+                            context.Response.BinaryWrite(filebytes);
+                            context.Response.End();
+                        }
+                    }
+                }
+
             }
 
         }
