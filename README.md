@@ -13,6 +13,7 @@ Add these keys to AppSettings, with your own data, obvs
     <add key="vbp:debuglogging" value="false" />
 
 Going through the settings in turn:
+
     <add key="vbp:startpaths" value="thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020" />
 In this example i have two folders in the blob container, basically two micro sites with flat html in them, and i put the names of those folders in the "vbp:startpaths" AppSetting like so: "thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020". They are a comma delimited list.
 
