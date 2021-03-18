@@ -36,8 +36,9 @@ This is a path to your default document. You could put a custom 404.html page in
     <add key="vbp:404document" value="404.html" />
 
 Lastly there is a logging setting:
+
     <add key="vbp:debuglogging" value="false" />
-This is only for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production you are asking for trouble.
+This is ONLY for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production you are asking for trouble.
 
 #### OTHER Settings
 
@@ -52,6 +53,4 @@ Lastly you need to Amend the AppSetting "umbracoReservedUrls" to add the paths a
     ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
     
     
-#### Logging
 
-There is a logging setting for when you are checking it out on your dev environment
