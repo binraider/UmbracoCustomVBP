@@ -17,6 +17,9 @@ Add these keys to AppSettings, with your own data, obvs
 
 Why did i build this? We have a few sites that have micro sites of flat html - sometimes with flipbooks, or javascript applications in them, that sort of thing. Since we use Azure WebApps almost exclusively it is a pain having to put all these thousands of files into the repo, for when we swap slots when using CI. I attempted to use Microsoft's VPP, in conjunction with Azure Blob Api, however there were various drawbacks along the way, so i ended up with this quick and dirty version.
 
+#### How it works
+It works by individually downloading the requested files and then pumping them out through the website front door as bytes, as if they are hosted locally.
+
 #### SETTINGS EXPLAINED
 Going through the settings in turn:
 
