@@ -42,7 +42,7 @@ This is the public address of your blob container. The blob container needs to h
 #### 404 File
 
     <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
-This is a path to your default document. You could put a custom 404.html page in the root of the container, and reference that like this:
+This is a path to your default 404 file. Alternatively you could put a custom 404.html page in the root of the container, and reference that like this:
 
     <add key="vbp:404document" value="404.html" />
 
