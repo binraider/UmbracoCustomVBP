@@ -11,21 +11,21 @@ Why did i build this? We have a few sites that have micro sites of flat html - s
 
 2) Add these keys to AppSettings, with your own data, obvs
 
-    <add key="vbp:startpaths" value="thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020" />
-    <add key="vbp:blobcontainerpath" value="https://thecompanydata.blob.core.windows.net/vpp" />
-    <add key="vbp:defaultdocument" value="index.html" />
-    <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
-    <add key="vbp:debuglogging" value="false" />
+        <add key="vbp:startpaths" value="thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020" />
+        <add key="vbp:blobcontainerpath" value="https://thecompanydata.blob.core.windows.net/vpp" />
+        <add key="vbp:defaultdocument" value="index.html" />
+        <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
+        <add key="vbp:debuglogging" value="false" />
 
 3) You need to add a reference to the module in the web.config. Without this it wont work at all. Also you should make this the first module - certainly before "UmbracoModule", "ClientDependencyModule" and "ImageProcessorModule", or again it wont work.
 
-    <remove name="vppModule" />
-    <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
+        <remove name="vppModule" />
+        <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
     
 
 4) Lastly you need to Amend the AppSetting "umbracoReservedUrls" to add the paths at the end. Slightly different format now - with the tilde and leading slash this time. if you want to use your normal websites 404 pages, then you can omit them.
 
-    ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
+        ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
     
 
 ## HOW IT WORKS
