@@ -23,20 +23,30 @@ It works by individually downloading the requested files and then pumping them o
 ## SETTINGS EXPLAINED
 Going through the settings in turn:
 
+#### Base folders
+
     <add key="vbp:startpaths" value="thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020" />
 
 These are the base folders that you want to "virtualize". It is a comma delimited list of the folders in question, without leading or trailing slashes. Requests starting with these folders will be handled by this Virtual Handler. 
 
+#### Blob container Url
+
     <add key="vbp:blobcontainerpath" value="https://thecompanydata.blob.core.windows.net/vpp" />
 This is the public address of your blob container. The blob container needs to have public access set, or it won't work. I have decided to create a blob container called "vpp" for this, as you can see. 
 
+#### Default document
+
     <add key="vbp:defaultdocument" value="index.html" />
  This is the default document, for when the user browses to a folder. As Azure blob storage (not the $web container, a normal version) will not look for a default document. 
+
+#### 404 File
 
     <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
 This is a path to your default document. You could put a custom 404.html page in the root of the container, and reference that like this:
 
     <add key="vbp:404document" value="404.html" />
+
+#### Logging setting
 
 Lastly there is a logging setting:
 
