@@ -15,6 +15,11 @@ using System.Reflection;
 using System.Threading.Tasks;
 
 namespace UmbracoCustomVBP {
+
+
+    // https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package-using-visual-studio-net-framework
+
+
     public class CustomVbpModule : IHttpModule {
         //private WebLogger logger;
 
