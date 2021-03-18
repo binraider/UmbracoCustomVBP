@@ -55,7 +55,7 @@ This is ONLY for when its just you using the website on your dev workstation - i
 
 ## OTHER Settings
 
-You need to add a reference to the module in the web.config:
+You need to add a reference to the module in the web.config. Without this it wont work at all. Also you should make this the first module - certainly before "UmbracoModule", "ClientDependencyModule" and "ImageProcessorModule", or again it wont work.
 
     <remove name="vppModule" />
     <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
