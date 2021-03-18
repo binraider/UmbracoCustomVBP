@@ -22,7 +22,7 @@ Going through the settings in turn:
 
     <add key="vbp:startpaths" value="thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020" />
 
-These are the base folders that you want to "virtualize". It is a comma delimited list of the folders in question, without leading or trailing slashes. 
+These are the base folders that you want to "virtualize". It is a comma delimited list of the folders in question, without leading or trailing slashes. Requests starting with these folders will be handled by this Virtual Handler. 
 
     <add key="vbp:blobcontainerpath" value="https://thecompanydata.blob.core.windows.net/vpp" />
 This is the public address of your blob container. The blob container needs to have public access set, or it won't work. I have decided to create a blob container called "vpp" for this, as you can see. 
@@ -32,10 +32,22 @@ This is the public address of your blob container. The blob container needs to h
 
     <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
 This is a path to your default document. You could put a custom 404.html page in the root of the container, and reference that like this:
+
     <add key="vbp:404document" value="404.html" />
 
+#### OTHER Settings
 
-Amend the AppSetting "umbracoReservedUrls" to add these paths at the end:
+You need to add a reference to the module in the web.config:
+
+    <remove name="vppModule" />
+    <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
+
+
+Lastly you need to Amend the AppSetting "umbracoReservedUrls" to add the paths at the end. Slightly different format now - with the tilde and leading slash this time.
 
     ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
     
+    
+#### Logging
+
+There is a logging setting for when you are checking it out on your dev environment
