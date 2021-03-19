@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("UmbracoCustomVBP")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Simple Virtual Path Provider for Static microsites")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Marshall Penn")]
 [assembly: AssemblyProduct("UmbracoCustomVBP")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]

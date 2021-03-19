@@ -83,6 +83,7 @@ namespace UmbracoCustomVBP {
                         }
                         if (filebytes != null) {
                             context.Response.ContentType = "text/html";
+                            context.Response.StatusCode = 404;
                             context.Response.BinaryWrite(filebytes);
                             context.Response.End();
                         }
