@@ -3,7 +3,7 @@ A quick n dirty virtual path provider for .net - primarily Umbraco 7, as the tes
 
 ## WHY?
 
-Why did i build this? We have a few sites that have micro sites of flat html - sometimes with flipbooks, or javascript applications in them, that sort of thing. Since we use Azure WebApps almost exclusively it is a pain having to put all these thousands of files into the repo, for when we swap slots when using CI. I attempted to use Microsoft's VPP, in conjunction with Azure Blob Api, however there were various drawbacks along the way, so i ended up with this quick and dirty version. Yes we could use Front Door - in fact some of our clients use Front Door, but some don't, and so for them there is this.
+Why did i build this? We have a few sites that have micro sites of flat html - sometimes with flipbooks, or javascript applications in them, that sort of thing. Since we use Azure WebApps almost exclusively it is a pain having to put all these thousands of files into the repo, for when we swap slots when using CI. I attempted to use Microsoft's VPP, in conjunction with Azure Blob Api, however there were various drawbacks along the way, so i ended up with this quick and dirty version. Yes we could use Front Door - in fact some of our clients use Front Door, but some don't, and so for them there is this. In addition Azure storage offers a specialised "$web" folder, that is made to host a static site - however i did not want to rely on that for this application.
 
 ## TO USE:
 
