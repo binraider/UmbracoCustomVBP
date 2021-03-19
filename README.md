@@ -67,9 +67,11 @@ Lastly there is a logging setting:
     <add key="vbp:debuglogging" value="false" />
 This is ONLY for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production you are asking for trouble.
 
-#### WARNING
+## WARNING
 
-This was built in a hurry. Therefore they may be bugs. If you see how it can be improved please dont hesitate to dip in. 
+This was built in a hurry. Therefore they may be bugs. Make sure you test thoroughly before using it in production. 
+
+If you see how it can be improved please dont hesitate to dip in. 
     
     
 
