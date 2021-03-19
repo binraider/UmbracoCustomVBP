@@ -51,7 +51,7 @@ This is the public address of your blob container. The blob container needs to h
 #### Default document
 
     <add key="vbp:defaultdocument" value="index.html" />
- This is the default document, for when the user browses to a folder. As Azure blob storage (not the $web container, a normal one) will not look for a default document. 
+ This is the default document, for when the user browses to a folder. As Azure blob storage (not the $web container, a normal one) will not look for a default document. It is best practice to actually have a default document in each folder - however if you don't it will attempt to load the 404 document specified in the next setting, so do make sure you 1) add a 404 file and 2) assign the path
 
 #### 404 File
 
