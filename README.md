@@ -28,7 +28,7 @@ Why did i build this? We have a few sites that have micro sites of flat html - s
         ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
     
 
-5) You then need to upload your folders and files to the blob storage.
+5) Don't forget to upload your folders and files to the blob storage.
 
 
 ## HOW IT WORKS
