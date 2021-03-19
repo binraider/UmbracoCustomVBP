@@ -65,7 +65,7 @@ This is a path to your default 404 file. Alternatively you could put a custom 40
 Lastly there is a logging setting:
 
     <add key="vbp:debuglogging" value="false" />
-This is ONLY for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production you are asking for trouble.
+This is ONLY for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production or any kind of serious traffic you are asking for trouble.
 
 ## WARNING
 
