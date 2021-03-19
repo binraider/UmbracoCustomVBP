@@ -75,5 +75,6 @@ This was built in a hurry. Therefore they may be bugs. Make sure you test thorou
 
 If you see how it can be improved please dont hesitate to dip in. 
     
+Furthermore, make sure there are no missing files in those files that you upload - if your code expects an image, css or whatever, make sure its there, or remove the reference. Each missing file is an unnecessary exception, and nobody likes them!
     
 
