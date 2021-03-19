@@ -60,6 +60,8 @@ This is a path to your default 404 file. Alternatively you could put a custom 40
 
     <add key="vbp:404document" value="404.html" />
 
+In my first example i am using the "home" page file for one of the folders as a 404. It would be better to have an actual 404 file, with a proper 404 message!
+
 #### Logging setting
 
 Lastly there is a logging setting:
