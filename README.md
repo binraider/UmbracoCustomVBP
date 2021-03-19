@@ -7,7 +7,7 @@ Why did i build this? We have a few sites that have micro sites of flat html - s
 
 ## TO USE:
 
-1) Place dll in the bin folder, or install the nuget package when it is ready (Its not ready).
+1) Place dll in the bin folder, or install the nuget package ( https://www.nuget.org/packages/UmbracoCustomVBP/ ).
 
 2) Add these keys to AppSettings, with your own data, obvs
 
