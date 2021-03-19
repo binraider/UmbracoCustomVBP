@@ -51,7 +51,7 @@ This is the public address of your blob container. The blob container needs to h
 #### Default document
 
     <add key="vbp:defaultdocument" value="index.html" />
- This is the default document, for when the user browses to a folder. As Azure blob storage (not the $web container, a normal version) will not look for a default document. 
+ This is the default document, for when the user browses to a folder. As Azure blob storage (not the $web container, a normal one) will not look for a default document. 
 
 #### 404 File
 
@@ -67,7 +67,9 @@ Lastly there is a logging setting:
     <add key="vbp:debuglogging" value="false" />
 This is ONLY for when its just you using the website on your dev workstation - its not thread safe, so if you accidently leave it on, when deployed to production you are asking for trouble.
 
+#### WARNING
 
+This was built in a hurry. Therefore they may be bugs. If you see how it can be improved please dont hesitate to dip in. 
     
     
 
