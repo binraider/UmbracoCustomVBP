@@ -23,10 +23,13 @@ Why did i build this? We have a few sites that have micro sites of flat html - s
         <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
     
 
-4) Lastly you need to Amend the AppSetting "umbracoReservedUrls" to add the paths at the end. Slightly different format now - with the tilde and leading slash this time. 
+4) You need to Amend the AppSetting "umbracoReservedUrls" to add the paths at the end. Slightly different format now - with the tilde and leading slash this time. 
 
         ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
     
+
+5) You then need to upload your folders and files to the blob storage.
+
 
 ## HOW IT WORKS
 It works by individually downloading the requested files and then pumping them out through the website front door as bytes, as if they are hosted locally.
