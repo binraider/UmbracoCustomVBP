@@ -77,4 +77,4 @@ If you see how it can be improved please dont hesitate to dip in.
     
 Furthermore, make sure there are no missing files in those files that you upload - if your code expects an image, css or whatever, make sure its there, or remove the reference. Each missing file is an unnecessary exception, and nobody likes them!
     
-Be careful you dont put an iframe into your 404 page, referencing another unobtainable page, otherwise you will get a loop which will bring down the site.
+Be careful you dont use a 404 page that has an iframe referencing another unobtainable page, otherwise you will get a loop which will bring down the site.
