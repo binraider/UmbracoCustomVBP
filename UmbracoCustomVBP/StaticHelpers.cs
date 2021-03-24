@@ -1,11 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace UmbracoCustomVBP {
     public static class StaticHelpers {
+
+        public static List<string> GetStartPaths() {
+            List<string> paths = new List<string>();
+            string startpaths = "";
+
+            if (ConfigurationManager.AppSettings["vbp:startpaths"] != null) {
+                startpaths = ConfigurationManager.AppSettings["vbp:startpaths"].Trim();
+                if (startpaths.Length > 0) {
+                    string[] arr = startpaths.Split(',');
+                    for (int i = 0; i < arr.Length; i++) {
+                        string temp = arr[i].Trim();
+                        if (temp.Length > 0) {
+                            paths.Add(temp);
+                        }
+                    }
+                }
+            }
+
+            return paths;
+        }
 
         public static string GetBinaryAppType(string filename) {
             string outy = "";

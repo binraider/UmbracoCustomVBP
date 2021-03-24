@@ -14,7 +14,7 @@ namespace UmbracoCustomVBP {
         //}
 
         public override async Task ProcessRequestAsync(HttpContext context) {
-            //WebLogger logger = new WebLogger(AppDomain.CurrentDomain.BaseDirectory + @"\app_data\Logs", "VPPModule");
+  
             string rawurl = context.Request.RawUrl.Split('?')[0].ToLower();
             string blobcontainerpath = "";
             string finalpath = "";
@@ -23,8 +23,7 @@ namespace UmbracoCustomVBP {
             string default404document = "404.html";
             bool DoLogging = false;
             bool IsHtmlExpected = (rawurl.EndsWith(".html") || rawurl.EndsWith(".htm") || rawurl.EndsWith("/"));
-            //logger.Log("====================== ProcessRequest ================================");
-            //logger.Log("rawurl (1):" + rawurl);
+
 
             if (ConfigurationManager.AppSettings["vbp:defaultdocument"] != null) {
                 defaultdocument = ConfigurationManager.AppSettings["vbp:defaultdocument"].Trim();
@@ -57,7 +56,11 @@ namespace UmbracoCustomVBP {
 
                 finalurl = blobcontainerpath + finalpath;
 
-                logger.Log("================ finalpath[" + finalpath + "] finalurl[" + finalurl + "] ============");
+                logger.Log("");
+                logger.Log("----------------------------------------");
+                logger.Log("rawurl[" + rawurl + "]");
+                logger.Log("finalpath[" + finalpath + "]");
+                logger.Log("finalurl[" + finalurl + "]");
 
                 var wc = new System.Net.WebClient();
 
@@ -75,23 +78,40 @@ namespace UmbracoCustomVBP {
                     context.Response.End();
                 } else {
                     if (IsHtmlExpected) {
-                        finalurl = blobcontainerpath + "/" + default404document;
-                        try {
-                            filebytes = await wc.DownloadDataTaskAsync(finalurl);                            
-                        } catch (Exception ex) {
-                            logger.Log("Error getting 404 page for [" + finalurl + "]:" + ex.ToString());
+                        string default404documentLow = default404document.ToLower();
+                        bool containsstartpath = false;
+
+                        List<string> startpaths = StaticHelpers.GetStartPaths();
+                        for (int i = 0; i < startpaths.Count; i++) {
+                            if (default404documentLow.Contains(startpaths[i].ToLower())) {
+                                containsstartpath = true;
+                                break;
+                            }
                         }
-                        if (filebytes != null) {
-                            context.Response.ContentType = "text/html";
-                            context.Response.StatusCode = 404;
-                            context.Response.BinaryWrite(filebytes);
-                            context.Response.End();
+
+                        if (containsstartpath) {
+                            // Oh no no no
+                        } else {
+                            if (default404documentLow.StartsWith("http")) {
+                                context.Response.Redirect(default404documentLow);
+                            } else {
+                                finalurl = blobcontainerpath + "/" + default404document;
+                                try {
+                                    filebytes = await wc.DownloadDataTaskAsync(finalurl);
+                                } catch (Exception ex) {
+                                    logger.Log("Error getting 404 page for [" + finalurl + "]:" + ex.ToString());
+                                }
+                                if (filebytes != null) {
+                                    context.Response.ContentType = "text/html";
+                                    context.Response.StatusCode = 404;
+                                    context.Response.BinaryWrite(filebytes);
+                                    context.Response.End();
+                                }
+                            }
                         }
                     }
                 }
-
             }
-
         }
     }
 }

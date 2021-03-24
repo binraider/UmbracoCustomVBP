@@ -41,22 +41,9 @@ namespace UmbracoCustomVBP {
 
             HttpContext context = ((HttpApplication)sender).Context;
             string rawurl = context.Request.RawUrl.Split('?')[0].ToLower();
-            string startpaths = "";
             bool pathfound = false;
             string startpath = "";
-            List<string> paths = new List<string>();
-
-            if (ConfigurationManager.AppSettings["vbp:startpaths"] != null) {
-                startpaths = ConfigurationManager.AppSettings["vbp:startpaths"].Trim();
-            }
-
-            string[] arr = startpaths.Split(',');
-            for (int i = 0; i < arr.Length; i++) {
-                string temp = arr[i].Trim();
-                if (temp.Length > 0) {
-                    paths.Add(temp);
-                }
-            }
+            List<string> paths = StaticHelpers.GetStartPaths();
 
             if (paths.Count > 0) {
 
@@ -69,7 +56,6 @@ namespace UmbracoCustomVBP {
                 }
 
                 if (pathfound) {
-                    //logger.Log(" - - - - - startpath[" + startpath + "]");
                     VbpFileHandler vbphandler = new VbpFileHandler();
                     context.RemapHandler(vbphandler);
                 }
