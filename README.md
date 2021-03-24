@@ -73,10 +73,16 @@ This is ONLY for when its just you using the website on your dev workstation - i
 
 This was built in a hurry. Therefore they may be bugs. Make sure you test thoroughly before using it in production. 
 
-Be careful you dont use a 404 page that has an iframe referencing another unobtainable page, otherwise you will get a loop which will bring down the site.
-
 If you see how it can be improved please dont hesitate to dip in. 
     
 Furthermore, make sure there are no missing files in those files that you upload - if your code expects an image, css or whatever, make sure its there, or remove the reference. Each missing file is an unnecessary exception, and nobody likes them!
     
+## Version 1.0.2
+
+Now added a 302 redirect if the request is just a virtual path without the trailing slash. This redirect added the trailing slash.
+
+404 document (1). This has changed and can no longer reside in any of the virtual paths listed in the "startpaths" appsetting. It can reside in the root of the container, or in a sub folder (e.g. misc/404.html) as long as its not in one of the  virtual paths listed in the "startpaths" appsetting. 
+
+404 Document (2). Alternatively it can also be an external url - so you can point it to a 404 page on your main site or a non-existent page on your main site and have your main site handle the error. This needs to be a full url though - e.g. "https://www.mysite.com/etcetcetc" 
+
 
