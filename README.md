@@ -79,7 +79,9 @@ Furthermore, make sure there are no missing files in those files that you upload
     
 ## Version 1.0.2
 
-Now added a 302 redirect if the request is just a virtual path without the trailing slash. This redirect added the trailing slash.
+Now added a 302 redirect if the request is just one of the listed virtual paths without the trailing slash. This redirect adds the trailing slash.
+
+So "/my-virtual-folder" would redirect to "/my-virtual-folder/"
 
 404 document (1). This has changed and can no longer reside in any of the virtual paths listed in the "startpaths" appsetting. It can reside in the root of the container, or in a sub folder (e.g. misc/404.html) as long as its not in one of the folders listed in the "startpaths" appsetting. 
 
