@@ -81,7 +81,7 @@ Furthermore, make sure there are no missing files in those files that you upload
 
 Now added a 302 redirect if the request is just a virtual path without the trailing slash. This redirect added the trailing slash.
 
-404 document (1). This has changed and can no longer reside in any of the virtual paths listed in the "startpaths" appsetting. It can reside in the root of the container, or in a sub folder (e.g. misc/404.html) as long as its not in one of the  virtual paths listed in the "startpaths" appsetting. 
+404 document (1). This has changed and can no longer reside in any of the virtual paths listed in the "startpaths" appsetting. It can reside in the root of the container, or in a sub folder (e.g. misc/404.html) as long as its not in one of the folders listed in the "startpaths" appsetting. 
 
 404 Document (2). Alternatively it can also be an external url - so you can point it to a 404 page on your main site or a non-existent page on your main site and have your main site handle the error. This needs to be a full url though - e.g. "https://www.mysite.com/etcetcetc" 
 
