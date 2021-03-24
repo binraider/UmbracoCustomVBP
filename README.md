@@ -73,7 +73,10 @@ This is ONLY for when its just you using the website on your dev workstation - i
 
 This was built in a hurry. Therefore they may be bugs. Make sure you test thoroughly before using it in production. 
 
+Be careful you dont use a 404 page that has an iframe referencing another unobtainable page, otherwise you will get a loop which will bring down the site.
+
 If you see how it can be improved please dont hesitate to dip in. 
     
+Furthermore, make sure there are no missing files in those files that you upload - if your code expects an image, css or whatever, make sure its there, or remove the reference. Each missing file is an unnecessary exception, and nobody likes them!
     
 
