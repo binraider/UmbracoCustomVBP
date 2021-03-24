@@ -22,9 +22,9 @@ namespace UmbracoCustomVBP {
             string defaultdocument = "index.html";
             string default404document = "404.html";
             bool DoLogging = false;
-            bool IsHtmlExpected = (rawurl.EndsWith(".html") || rawurl.EndsWith(".htm") || rawurl.EndsWith("/"));
 
 
+            #region AppSettings
             if (ConfigurationManager.AppSettings["vbp:defaultdocument"] != null) {
                 defaultdocument = ConfigurationManager.AppSettings["vbp:defaultdocument"].Trim();
             }
@@ -39,10 +39,12 @@ namespace UmbracoCustomVBP {
                     }
                 }
             }
-
             if (ConfigurationManager.AppSettings["vbp:debuglogging"] != null) {
                 DoLogging = ConfigurationManager.AppSettings["vbp:debuglogging"].Trim().ToLower().Equals("true");
             }
+            #endregion
+
+
 
             if (blobcontainerpath.Length > 0) {
 
@@ -56,10 +58,6 @@ namespace UmbracoCustomVBP {
 
                 finalurl = blobcontainerpath + finalpath;
 
-                logger.Log("");
-                logger.Log("----------------------------------------");
-                logger.Log("rawurl[" + rawurl + "]");
-                logger.Log("finalpath[" + finalpath + "]");
                 logger.Log("finalurl[" + finalurl + "]");
 
                 var wc = new System.Net.WebClient();
@@ -77,7 +75,11 @@ namespace UmbracoCustomVBP {
                     context.Response.BinaryWrite(filebytes);
                     context.Response.End();
                 } else {
-                    if (IsHtmlExpected) {
+                    bool IsJsCssWhatever = StaticHelpers.IsNormalFileType(finalurl, false);
+
+                    if (IsJsCssWhatever) {
+
+                    } else {
                         string default404documentLow = default404document.ToLower();
                         bool containsstartpath = false;
 
@@ -93,6 +95,7 @@ namespace UmbracoCustomVBP {
                             // Oh no no no
                         } else {
                             if (default404documentLow.StartsWith("http")) {
+                                context.Response.StatusCode = 404;
                                 context.Response.Redirect(default404documentLow);
                             } else {
                                 finalurl = blobcontainerpath + "/" + default404document;

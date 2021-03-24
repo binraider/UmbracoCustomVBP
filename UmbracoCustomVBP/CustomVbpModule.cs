@@ -21,20 +21,13 @@ namespace UmbracoCustomVBP {
 
 
     public class CustomVbpModule : IHttpModule {
-        //private WebLogger logger;
-
 
         public void Dispose() {
             //throw new Exception("The method or operation is not implemented.");
         }
 
         public void Init(HttpApplication application) {
-
-            //logger = new WebLogger(AppDomain.CurrentDomain.BaseDirectory + @"\App_Data\Logs", "VPPModule");
-
             application.PostAuthorizeRequest += Application_PostAuthorizeRequest;
-
-
         }
 
         private void Application_PostAuthorizeRequest(object sender, EventArgs e) {
@@ -42,20 +35,39 @@ namespace UmbracoCustomVBP {
             HttpContext context = ((HttpApplication)sender).Context;
             string rawurl = context.Request.RawUrl.Split('?')[0].ToLower();
             bool pathfound = false;
-            string startpath = "";
+            string barepath = "";
+
+            bool IsNormalFile = StaticHelpers.IsNormalFileType(rawurl, true);
             List<string> paths = StaticHelpers.GetStartPaths();
 
             if (paths.Count > 0) {
-
-                foreach (var x in paths) {
-                    if (rawurl.StartsWith("/" + x + "/")) {
-                        pathfound = true;
-                        startpath = "/" + x + "/";
-                        break;
+                if (IsNormalFile) { // I.e. it is a js, css, whatever
+                    foreach (var x in paths) {
+                        if (rawurl.StartsWith("/" + x + "/")) {
+                            pathfound = true;
+                            break;
+                        }
+                    }
+                } else {
+                    foreach (var x in paths) {
+                        if (rawurl.StartsWith("/" + x)) {
+                            pathfound = true;
+                            if (rawurl.Equals("/" + x, StringComparison.InvariantCultureIgnoreCase)) {
+                                barepath = "/" + x;
+                            }
+                            break;
+                        }
                     }
                 }
 
                 if (pathfound) {
+                    if (barepath.Length > 0) {
+                        if (!barepath.EndsWith("/")) {
+                            string redirecturl = context.Request.RawUrl.Split('?')[0].ToLower() + "/";
+                            context.Response.StatusCode = 302;
+                            context.Response.Redirect(redirecturl);
+                        }
+                    }
                     VbpFileHandler vbphandler = new VbpFileHandler();
                     context.RemapHandler(vbphandler);
                 }

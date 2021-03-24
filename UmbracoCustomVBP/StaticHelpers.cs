@@ -8,6 +8,80 @@ using System.Threading.Tasks;
 namespace UmbracoCustomVBP {
     public static class StaticHelpers {
 
+        public static bool IsNormalFileType(string path, bool includehtml) {
+            bool outy = false;
+            string ext = "";
+            if (path.IndexOf('.') > -1) {
+                string[] arr = path.ToLower().Split('.');
+                ext = arr[arr.Length - 1];
+            } else {
+                ext = path.ToLower();
+            }
+            switch (ext) {
+                case "csv":
+                case "xls":
+                case "xlsx":
+                case "xlsm":
+                case "xltx":
+                case "xltm":
+                case "xlsb":
+                case "xlam":
+                case "doc":
+                case "docx":
+                case "rtf":
+                case "docm":
+                case "dotx":
+                case "dotm":
+                case "ppt":
+                case "pptx":
+                case "pptm":
+                case "potx":
+                case "potm":
+                case "ppam":
+                case "ppsx":
+                case "ppsm":
+                case "pdf":
+                case "txt":
+                case "bmp":
+                case "eps":
+                case "exe":
+                case "gif":
+                case "ico":
+                case "jpg":
+                case "jpeg":
+                case "mpeg":
+                case "mp4":
+                case "png":
+                case "mp3":
+                case "oga":
+                case "ogv":
+                case "ogx":
+                case "otf":
+                case "ttf":
+                case "woff":
+                case "woff2":
+                case "eot":
+                case "ps":
+                case "swf":
+                case "zip":
+                case "css":
+                case "js":
+                case "json":
+                case "xml":
+                case "svg":
+                    outy = true;
+                    break;
+                case "html":
+                case "htm":
+                    if (includehtml) {
+                        outy = true;
+                    }
+                    break;
+            }
+
+            return outy;
+        }
+
         public static List<string> GetStartPaths() {
             List<string> paths = new List<string>();
             string startpaths = "";
