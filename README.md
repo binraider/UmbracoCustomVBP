@@ -46,7 +46,7 @@ These are the base folders that you want to "virtualize". It is a comma delimite
 #### Blob container Url
 
     <add key="vbp:blobcontainerpath" value="https://thecompanydata.blob.core.windows.net/vpp" />
-This is the public address of your blob container. The blob container needs to have public access set, or it won't work. I have decided to create a blob container called "vpp" for this, as you can see. 
+This is the public address of your blob container. The blob container needs to have public access set, or it won't work. I have decided to create a blob container called "vpp" in this instance, as you can see. 
 
 #### Default document
 
