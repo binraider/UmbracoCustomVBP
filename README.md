@@ -14,7 +14,7 @@ Why did i build this? We have a few sites that have micro sites of flat html - s
         <add key="vbp:startpaths" value="thecompany-foundation-annual-review-2020,thecompany-exchange-autumn-2020" />
         <add key="vbp:blobcontainerpath" value="https://thecompanydata.blob.core.windows.net/vpp" />
         <add key="vbp:defaultdocument" value="index.html" />
-        <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
+        <add key="vbp:404document" value="404.html" />
         <add key="vbp:debuglogging" value="false" />
 
 3) You need to add a reference to the module in the web.config. Without this it wont work at all. Also you should make this the first module - certainly before "UmbracoModule", "ClientDependencyModule" and "ImageProcessorModule", or again it wont work.
@@ -55,12 +55,10 @@ This is the public address of your blob container. The blob container needs to h
 
 #### 404 File
 
-    <add key="vbp:404document" value="thecompany-foundation-annual-review-2020/index.html" />
-This is a path to your default 404 file. Alternatively you could put a custom 404.html page in the root of the container, and reference that like this:
-
     <add key="vbp:404document" value="404.html" />
+This is a path to your default 404 file. It cannot reside in any of the virtual paths listed in the "startpaths" appsetting. It can reside in the root of the container, or in a sub folder (e.g. misc/404.html) as long as its not in one of the folders listed in the "startpaths" appsetting. 
 
-In my first example i am using the "home" page file for one of the folders as a 404. It would be better to have an actual 404 file, with a proper 404 message!
+
 
 #### Logging setting
 
@@ -83,7 +81,7 @@ Now added a 302 redirect if the request is just one of the listed virtual paths 
 
 So "/my-virtual-folder" would redirect to "/my-virtual-folder/"
 
-404 document (1). This has changed and can no longer reside in any of the virtual paths listed in the "startpaths" appsetting. It can reside in the root of the container, or in a sub folder (e.g. misc/404.html) as long as its not in one of the folders listed in the "startpaths" appsetting. 
+404 document (1). This has changed from 1.0.0/1.0.1 and can no longer reside in any of the virtual paths listed in the "startpaths" appsetting. It can reside in the root of the container, or in a sub folder (e.g. misc/404.html) as long as its not in one of the folders listed in the "startpaths" appsetting. 
 
 404 Document (2). Alternatively it can also be an external url - so you can point it to a 404 page on your main site or a non-existent page on your main site and have your main site handle the error. This needs to be a full url though - e.g. "https://www.mysite.com/etcetcetc" 
 
