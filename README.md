@@ -25,7 +25,21 @@ It works by individually downloading the requested files and then pumping them o
         <remove name="vppModule" />
         <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
     
+So this:
+        
+        <modules runAllManagedModulesForAllRequests="true">
+          <remove name="UmbracoModule" />
+          <add name="UmbracoModule" type="Umbraco.Web.UmbracoModule,umbraco" />
 
+Would end up like this:
+
+        <modules runAllManagedModulesForAllRequests="true">
+          <remove name="vppModule" />
+          <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
+          <remove name="UmbracoModule" />
+          <add name="UmbracoModule" type="Umbraco.Web.UmbracoModule,umbraco" />
+          
+          
 4) You need to Amend the AppSetting "umbracoReservedUrls" to add the paths at the end. Slightly different format now - with the tilde and leading slash this time. 
 
         ",~/thecompany-foundation-annual-review-2020,~/thecompany-exchange-autumn-2020"
