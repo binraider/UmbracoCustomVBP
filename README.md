@@ -25,13 +25,13 @@ It works by individually downloading the requested files and then pumping them o
         <remove name="vppModule" />
         <add name="vppModule" type="UmbracoCustomVBP.CustomVbpModule" />
     
-So this:
+ So this:
         
         <modules runAllManagedModulesForAllRequests="true">
           <remove name="UmbracoModule" />
           <add name="UmbracoModule" type="Umbraco.Web.UmbracoModule,umbraco" />
 
-Would end up like this:
+ Would end up like this:
 
         <modules runAllManagedModulesForAllRequests="true">
           <remove name="vppModule" />
