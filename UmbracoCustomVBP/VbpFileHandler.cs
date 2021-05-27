@@ -14,8 +14,9 @@ namespace UmbracoCustomVBP {
         //}
 
         public override async Task ProcessRequestAsync(HttpContext context) {
-  
-            string rawurl = context.Request.RawUrl.Split('?')[0].ToLower();
+
+            //string rawurl = context.Request.RawUrl.Split('?')[0].ToLower();
+            string rawurl = context.Request.RawUrl.Split('?')[0];
             string blobcontainerpath = "";
             string finalpath = "";
             string finalurl = "";
