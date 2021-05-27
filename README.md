@@ -100,4 +100,6 @@ So "/my-virtual-folder" would redirect to "/my-virtual-folder/"
 
 404 Document (2). Alternatively it can also be an external url - so you can point it to a 404 page on your main site or a non-existent page on your main site and have your main site handle the error. This needs to be a full url though - e.g. "https://www.mysite.com/etcetcetc" 
 
+## Version 1.0.3
 
+Discovered that Azure blob storage is case sensitive - so changed blob seeker call to retain case.
